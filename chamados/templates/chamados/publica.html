@@ -1,0 +1,28 @@
+{% extends "chamados/base.html" %}
+
+{% block conteudo %}
+<main class="max-w-2xl mx-auto px-4 py-10">
+
+  <!-- Aqui entram as seções de apresentação do serviço. São suas. -->
+
+  <form method="post" class="bg-white rounded-xl p-6 shadow-sm">
+    {% csrf_token %}
+
+    {% for campo in form %}
+      <div class="mb-4">
+        <label for="{{ campo.id_for_label }}" class="block text-sm font-medium mb-1">
+          {{ campo.label }}
+        </label>
+        {{ campo }}
+        {% for erro in campo.errors %}
+          <p class="text-sm text-red-600 mt-1">{{ erro }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="w-full bg-slate-900 text-white rounded-lg py-3 font-medium">
+      Abrir chamado
+    </button>
+  </form>
+</main>
+{% endblock %}

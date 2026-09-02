@@ -1,0 +1,28 @@
+{% extends "chamados/base.html" %}
+
+{% block titulo %}Chamado registrado{% endblock %}
+
+{% block conteudo %}
+<main class="max-w-2xl mx-auto px-4 py-16">
+  <div class="bg-white rounded-xl p-8 shadow-sm text-center">
+
+    <div class="w-14 h-14 mx-auto mb-5 rounded-full bg-emerald-100 flex items-center justify-center">
+      <span class="text-emerald-600 text-3xl leading-none">&check;</span>
+    </div>
+
+    <h1 class="text-2xl font-semibold mb-3">Chamado registrado</h1>
+
+    <p class="text-slate-600 mb-2">
+      Seu chamado entrou na fila e está aguardando triagem da equipe de suporte.
+    </p>
+    <p class="text-slate-600 mb-8">
+      O retorno será enviado para o e-mail informado.
+    </p>
+
+    <a href="{% url 'pagina_publica' %}"
+       class="inline-block bg-slate-900 text-white rounded-lg px-6 py-3 font-medium">
+      Abrir outro chamado
+    </a>
+  </div>
+</main>
+{% endblock %}
