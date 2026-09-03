@@ -1,9 +1,95 @@
 {% extends "chamados/base.html" %}
 
-{% block conteudo %}
-<main class="max-w-2xl mx-auto px-4 py-10">
+{% block titulo %}Abrir chamado — Chamados Helpdesk{% endblock %}
 
-  <!-- Aqui entram as seções de apresentação do serviço. São suas. -->
+{% block conteudo %}
+
+<section class="max-w-5xl mx-auto px-4 py-16">
+  <div class="max-w-2xl">
+    <h1 class="text-4xl font-semibold mb-4">Precisa de suporte técnico?</h1>
+    <p class="text-lg text-slate-600 mb-8">
+      Registre o problema aqui. O chamado entra na fila da equipe de suporte com as
+      informações necessárias para o atendimento começar sem precisar te ligar de volta
+      para perguntar o básico.
+    </p>
+    <a href="#abrir-chamado"
+       class="inline-block bg-slate-900 text-white rounded-lg px-6 py-3 font-medium">
+      Abrir um chamado
+    </a>
+  </div>
+</section>
+
+<section class="bg-white border-y border-slate-200">
+  <div class="max-w-5xl mx-auto px-4 py-14">
+    <h2 class="text-xl font-semibold mb-8">O que a equipe atende</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+
+      <div>
+        <h3 class="font-medium mb-2">Computador não liga ou está lento</h3>
+        <p class="text-slate-600 text-sm">
+          Máquina que não inicia, trava, reinicia sozinha ou ficou lenta de uma hora
+          para outra.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-medium mb-2">Programa não funciona</h3>
+        <p class="text-slate-600 text-sm">
+          Um programa que não abre, fecha sozinho, dá mensagem de erro ou parou de
+          aceitar seu acesso.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-medium mb-2">Problemas com internet ou sistema</h3>
+        <p class="text-slate-600 text-sm">
+          Internet fora do ar, conexão lenta, impressora de rede sumida ou sistema
+          interno indisponível.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-14">
+  <h2 class="text-xl font-semibold mb-8">Como funciona</h2>
+  <ol class="grid gap-8 md:grid-cols-3 text-sm">
+
+    <li>
+      <span class="block text-slate-400 font-mono mb-2">01</span>
+      <h3 class="font-medium mb-1">Você descreve o problema</h3>
+      <p class="text-slate-600">
+        Sem precisar saber a causa. Escolha a opção mais parecida e conte o que está
+        acontecendo.
+      </p>
+    </li>
+
+    <li>
+      <span class="block text-slate-400 font-mono mb-2">02</span>
+      <h3 class="font-medium mb-1">A equipe faz a triagem</h3>
+      <p class="text-slate-600">
+        O chamado é analisado e encaminhado para o técnico certo. Chamados parecidos e
+        próximos no tempo costumam ter a mesma causa.
+      </p>
+    </li>
+
+    <li>
+      <span class="block text-slate-400 font-mono mb-2">03</span>
+      <h3 class="font-medium mb-1">O atendimento começa</h3>
+      <p class="text-slate-600">
+        O retorno é enviado para o e-mail informado no chamado.
+      </p>
+    </li>
+
+  </ol>
+</section>
+
+<section id="abrir-chamado" class="max-w-2xl mx-auto px-4 pb-16">
+  <h2 class="text-2xl font-semibold mb-2">Abrir um chamado</h2>
+  <p class="text-slate-600 mb-6">
+    Quanto mais detalhes, menos idas e vindas até a solução.
+  </p>
 
   <form method="post" class="bg-white rounded-xl p-6 shadow-sm">
     {% csrf_token %}
@@ -24,5 +110,6 @@
       Abrir chamado
     </button>
   </form>
-</main>
+</section>
+
 {% endblock %}
