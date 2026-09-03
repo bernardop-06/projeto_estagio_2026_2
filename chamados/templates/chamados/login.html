@@ -1,0 +1,30 @@
+{% extends "chamados/base.html" %}
+
+{% block titulo %}Entrar{% endblock %}
+
+{% block conteudo %}
+<main class="max-w-sm mx-auto px-4 py-16">
+  <h1 class="text-2xl font-semibold mb-6">Acesso da equipe</h1>
+
+  <form method="post" class="bg-white rounded-xl p-6 shadow-sm">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      <p class="text-sm text-red-600 mb-4">Usuário ou senha incorretos.</p>
+    {% endif %}
+
+    {% for campo in form %}
+      <div class="mb-4">
+        <label for="{{ campo.id_for_label }}" class="block text-sm font-medium mb-1">
+          {{ campo.label }}
+        </label>
+        {{ campo }}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="w-full bg-slate-900 text-white rounded-lg py-3 font-medium">
+      Entrar
+    </button>
+  </form>
+</main>
+{% endblock %}
