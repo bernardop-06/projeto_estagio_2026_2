@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
-
+from django.contrib.auth.decorators import login_required
+from .models import Chamado
 from .forms import ChamadoForm
 
 
@@ -17,3 +18,8 @@ def pagina_publica(request):
 
 def chamado_enviado(request):
     return render(request, "chamados/enviado.html")
+
+@login_required
+def painel(request):
+    chamados = Chamado.objects.order_by("data_inicio", "hora_inicio")
+    return render(request, "chamados/painel.html", {"chamados": chamados})

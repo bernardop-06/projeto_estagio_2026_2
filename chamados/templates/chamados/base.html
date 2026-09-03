@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block titulo %}Suporte{% endblock %}</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+  input:not([type=submit]), select, textarea {
+    width: 100%; border: 1px solid #cbd5e1;
+    border-radius: .5rem; padding: .5rem .75rem;
+  }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
   {% block conteudo %}{% endblock %}
