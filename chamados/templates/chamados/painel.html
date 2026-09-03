@@ -7,10 +7,7 @@
 
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-2xl font-semibold">Chamados</h1>
-    <form method="post" action="{% url 'logout' %}">
-      {% csrf_token %}
-      <button type="submit" class="text-sm text-slate-600 underline">Sair</button>
-    </form>
+    <span class="text-sm text-slate-500">{{ chamados|length }} registrado{{ chamados|length|pluralize }}</span>
   </div>
 
   {% if chamados %}
@@ -36,7 +33,22 @@
                 {{ chamado.data_inicio|date:"d/m/Y" }}
                 {% if chamado.hora_inicio %} às {{ chamado.hora_inicio|time:"H:i" }}{% endif %}
               </td>
-              <td class="p-3">{{ chamado.get_status_display }}</td>
+              <td class="p-3">
+                <form method="post" action="{% url 'alterar_status' chamado.id %}"
+                      class="flex items-center gap-2">
+                  {% csrf_token %}
+                  <select name="status" class="text-sm" style="width:auto">
+                    {% for valor, rotulo in chamado.STATUS %}
+                      <option value="{{ valor }}" {% if chamado.status == valor %}selected{% endif %}>
+                        {{ rotulo }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                  <button type="submit" class="text-sm text-slate-600 underline whitespace-nowrap">
+                    Salvar
+                  </button>
+                </form>
+              </td>
             </tr>
           {% endfor %}
         </tbody>

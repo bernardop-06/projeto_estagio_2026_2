@@ -13,4 +13,5 @@ urlpatterns = [
         name="login",
     ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path("painel/<int:chamado_id>/status/", views.alterar_status, name="alterar_status"),
 ]
